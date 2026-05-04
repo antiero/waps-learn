@@ -6,4 +6,4 @@ export function load({ params }) {
 }
 
 export const prerender = true;
-export const entries = () => ['oscillator', 'filter', 'envelope'];
+export const entries = () => ['oscillator', 'filter', 'envelope'].map((lesson) => ({ lesson }));
