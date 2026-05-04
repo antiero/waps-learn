@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
+  import { base } from '$app/paths';
   import { audioEngine } from '$lib/AudioEngine.js';
   import PlaySurface from '$lib/PlaySurface.svelte';
   import Oscilloscope from '$lib/Oscilloscope.svelte';
@@ -25,7 +26,7 @@
 
   const pickMode = async (m) => {
     mode = m;
-    await goto(`/${m}`);
+    await goto(`${base}/${m}`);
   };
 
   const start = async ({ detail }) => {
@@ -45,7 +46,7 @@
 
 <main class="mx-auto flex min-h-screen max-w-5xl flex-col gap-4 p-4">
   <header class="flex items-center justify-between rounded-2xl bg-white/70 p-3 shadow-sm dark:bg-slate-900/70">
-    <a class="flex items-center gap-2 text-xl font-semibold" href="/oscillator"><span class="text-accent-500">WAPS</span> Learn</a>
+    <a class="flex items-center gap-2 text-xl font-semibold" href={`${base}/oscillator`}><span class="text-accent-500">WAPS</span> Learn</a>
     <nav class="flex gap-2" aria-label="Lesson modes">
       {#each lessons as lesson}
         <button class="min-h-11 min-w-11 rounded-xl p-2 {mode === lesson.id ? 'bg-accent-500 text-white' : 'bg-slate-200 dark:bg-slate-800'}" aria-label={lesson.label} on:click={() => pickMode(lesson.id)}>
